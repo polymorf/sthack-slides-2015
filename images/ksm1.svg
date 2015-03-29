@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="210mm" height="297mm" viewBox="0 0 2100 2970" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs>
+
+	</defs>
+	<svg x="0" y="0" width="2100" height="2970">
+		<g transform="translate(10.00,10.00)">
+		</g>
+	</svg>
+	<svg x="0" y="0" width="2100" height="2970">
+		<g transform="translate(339.18,408.52) scale(1,1) rotate(0.00,354.57,63.73) " fill="rgb(145,216,245)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 709.15 127.46 L 709.15 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,354.57,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="87.83 125.94 164.04 202.15 240.26 278.36 316.47 392.68 430.79 468.89 507.00 545.10 583.21 " y="82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 ">
+						Virtualmemory</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(337.23,23.83) scale(1,1) rotate(0.00,355.55,177.77) " fill="rgb(129,181,239)" fill-opacity="1.0000000000000000" stroke="rgb(255,255,255)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 355.55 L 711.10 355.55 L 711.10 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,355.55,177.77) ">
+				<rect x="279" y="135" width="152" height="84" fill="rgb(255,255,255)" stroke="none" opacity="0.0000000000000000">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="70" font-family="Calibri" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0000000000000000" x="279.52 319.55 395.82 " y="195.92 195.92 195.92 ">
+						VM1</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(339.18,835.48) scale(1,1) rotate(0.00,726.58,63.73) " fill="rgb(145,216,245)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 1453.16 127.46 L 1453.16 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,726.58,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="517.00 555.10 593.21 631.31 707.53 745.63 783.74 821.84 859.95 898.06 " y="82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 ">
+						Mainmemory</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1082.22,408.52) scale(1,1) rotate(0.00,354.57,63.73) " fill="rgb(145,216,245)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 709.15 127.46 L 709.15 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,354.57,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="87.83 125.94 164.04 202.15 240.26 278.36 316.47 392.68 430.79 468.89 507.00 545.10 583.21 " y="82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 ">
+						Virtualmemory</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1081.24,23.83) scale(1,1) rotate(0.00,355.55,177.77) " fill="rgb(129,181,239)" fill-opacity="1.0000000000000000" stroke="rgb(255,255,255)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 355.55 L 711.10 355.55 L 711.10 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,355.55,177.77) ">
+				<rect x="279" y="135" width="152" height="84" fill="rgb(255,255,255)" stroke="none" opacity="0.0000000000000000">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="70" font-family="Calibri" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0000000000000000" x="279.52 319.55 395.82 " y="195.92 195.92 195.92 ">
+						VM2</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(338.20,568.90) scale(1,1) rotate(0.00,727.07,121.17) " fill="rgb(124,218,139)" fill-opacity="1.0000000000000000" stroke="rgb(255,255,255)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 242.34 L 1454.13 242.34 L 1454.13 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,727.07,121.17) ">
+				<rect x="555" y="79" width="344" height="84" fill="rgb(255,255,1279)" stroke="none" opacity="0.0000000000000000">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="70" font-family="Calibri" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="554.52 598.48 630.41 667.48 702.59 727.19 759.05 775.25 802.84 837.95 875.02 " y="139.32 139.32 139.32 139.32 139.32 139.32 139.32 139.32 139.32 139.32 139.32 ">
+						Hyperviseur</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(463.50,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,198,153)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(532.00,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(49,0,113)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(603.01,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(183,0,0)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(674.01,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,246,153)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(745.02,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(38,215,174)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(816.02,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(87,51,15)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(887.03,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,153,153)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(958.03,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,198,153)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(395.00,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,255,255)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1207.51,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(230,156,250)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1276.01,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(49,0,113)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1347.02,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(183,0,0)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1418.02,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(152,255,230)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1489.03,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(0,0,0)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1560.03,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(152,255,38)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1631.04,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(131,147,202)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1702.05,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,198,153)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1139.01,408.52) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,255,255)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(464.48,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,198,153)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(532.98,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(49,0,113)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(603.98,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(183,0,0)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(674.99,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,246,153)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(745.99,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(38,215,174)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(817.00,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(87,51,15)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(888.00,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,153,153)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(959.01,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,198,153)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(395.98,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,255,255)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1208.49,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(230,156,250)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1276.99,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(49,0,113)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1347.99,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(183,0,0)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1419.00,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(152,255,230)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1490.00,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(0,0,0)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1561.01,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(152,255,38)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1632.01,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(131,147,202)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1703.02,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,198,153)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+		<g transform="translate(1139.99,835.48) scale(1,1) rotate(0.00,18.77,63.73) " fill="rgb(255,255,255)" fill-opacity="0.5800000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 37.53 127.46 L 37.53 0.00 L 0.00 0.00  Z">
+			</path>
+		</g>
+	</svg>
+</svg>

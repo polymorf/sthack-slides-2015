@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="210mm" height="297mm" viewBox="0 0 2100 2970" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs>
+
+	</defs>
+	<svg x="0" y="0" width="2100" height="2970">
+		<g transform="translate(10.00,10.00)">
+		</g>
+	</svg>
+	<svg x="0" y="0" width="2100" height="2970">
+		<g transform="translate(307.88,245.09) scale(1,1) rotate(0.00,757.88,368.93) " fill="rgb(255,255,255)" fill-opacity="0.3300000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 737.85 L 1515.75 737.85 L 1515.75 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,757.88,368.93) ">
+				<text stroke-width="0">
+				</text>
+			</g>
+		</g>
+		<g transform="translate(339.18,312.54) scale(1,1) rotate(0.00,328.42,63.73) " fill="rgb(176,255,152)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 656.84 127.46 L 656.84 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,328.42,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="214.10 252.21 290.31 328.42 404.63 " y="82.99 82.99 82.99 82.99 82.99 ">
+						Core1</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(339.18,475.48) scale(1,1) rotate(0.00,156.58,63.73) " fill="rgb(242,255,151)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 313.16 127.46 L 313.16 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,156.58,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="4.15 42.26 118.47 156.58 194.69 232.79 270.90 " y="82.99 82.99 82.99 82.99 82.99 82.99 82.99 ">
+						L1instr</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(682.86,475.48) scale(1,1) rotate(0.00,156.58,63.73) " fill="rgb(152,255,230)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 313.16 127.46 L 313.16 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,156.58,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="23.21 61.31 137.53 175.63 213.74 251.84 " y="82.99 82.99 82.99 82.99 82.99 82.99 ">
+						L1data</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(339.18,638.42) scale(1,1) rotate(0.00,328.42,63.73) " fill="rgb(255,175,0)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 656.84 127.46 L 656.84 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,328.42,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="290.31 328.42 " y="82.99 82.99 ">
+						L2</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1132.08,312.54) scale(1,1) rotate(0.00,328.42,63.73) " fill="rgb(176,255,152)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 656.84 127.46 L 656.84 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,328.42,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="214.10 252.21 290.31 328.42 404.63 " y="82.99 82.99 82.99 82.99 82.99 ">
+						Core1</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1132.08,475.48) scale(1,1) rotate(0.00,156.58,63.73) " fill="rgb(242,255,151)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 313.16 127.46 L 313.16 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,156.58,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="4.15 42.26 118.47 156.58 194.69 232.79 270.90 " y="82.99 82.99 82.99 82.99 82.99 82.99 82.99 ">
+						L1instr</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1475.76,475.48) scale(1,1) rotate(0.00,156.58,63.73) " fill="rgb(152,255,230)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 313.16 127.46 L 313.16 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,156.58,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="23.21 61.31 137.53 175.63 213.74 251.84 " y="82.99 82.99 82.99 82.99 82.99 82.99 ">
+						L1data</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1132.08,638.42) scale(1,1) rotate(0.00,328.42,63.73) " fill="rgb(255,175,0)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 656.84 127.46 L 656.84 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,328.42,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="290.31 328.42 " y="82.99 82.99 ">
+						L2</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(339.18,801.36) scale(1,1) rotate(0.00,726.58,63.73) " fill="rgb(145,216,245)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 1453.16 127.46 L 1453.16 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,726.58,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="688.47 726.58 " y="82.99 82.99 ">
+						L3</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(339.18,1065.48) scale(1,1) rotate(0.00,726.58,63.73) " fill="rgb(255,153,153)" fill-opacity="1.0000000000000000" stroke="rgb(50,50,50)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 127.46 L 1453.16 127.46 L 1453.16 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,726.58,63.73) ">
+				<text stroke-width="0">
+					<tspan font-size="63" font-family="Monaco" font-weight="100" stroke="rgb(37,37,37)" fill="rgb(37,37,37)" opacity="1.0000000000000000" x="517.00 555.10 593.21 631.31 707.53 745.63 783.74 821.84 859.95 898.06 " y="82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 82.99 ">
+						Mainmemory</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(515.20,52.94) scale(1,1) rotate(0.00,152.40,76.20) " fill="rgb(129,181,239)" fill-opacity="1.0000000000000000" stroke="rgb(255,255,255)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 152.40 L 304.80 152.40 L 304.80 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,152.40,76.20) ">
+				<rect x="71" y="34" width="162" height="84" fill="rgb(255,255,1279)" stroke="none" opacity="0.0000000000000000">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="70" font-family="Calibri" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0000000000000000" x="70.61 103.03 137.41 173.86 " y="94.35 94.35 94.35 94.35 ">
+						STPM</tspan>
+				</text>
+			</g>
+		</g>
+		<g transform="translate(1308.10,52.94) scale(1,1) rotate(0.00,152.40,76.20) " fill="rgb(129,181,239)" fill-opacity="1.0000000000000000" stroke="rgb(255,255,255)" stroke-width="2" stroke-linecap="round" stroke-opacity="1.0000000000000000">
+			<path fill-rule="evenodd" marker-start="none" marker-end="none" d="M 0.00 0.00 L 0.00 152.40 L 304.80 152.40 L 304.80 0.00 L 0.00 0.00  Z">
+			</path>
+			<g transform="translate(0.00,0.00) scale(1,1) rotate(0.00,152.40,76.20) ">
+				<rect x="33" y="34" width="238" height="84" fill="rgb(255,255,1279)" stroke="none" opacity="0.0000000000000000">
+				</rect>
+				<text stroke-width="0">
+					<tspan font-size="70" font-family="Calibri" font-weight="100" stroke="rgb(255,255,255)" fill="rgb(255,255,255)" opacity="1.0000000000000000" x="32.58 65.00 100.10 129.94 173.35 197.94 235.15 " y="94.35 94.35 94.35 94.35 94.35 94.35 94.35 ">
+						SecDrop</tspan>
+				</text>
+			</g>
+		</g>
+	</svg>
+</svg>

